@@ -2,7 +2,8 @@ inherit linux-kernel-base deploy
 
 DESCRIPTION = "QTI Video driver"
 LICENSE = "GPL-2.0-with-Linux-syscall-note"
-LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta-qti-bsp/files/common-licenses/\
+GPL-2.0-only;md5=801f80980d171dd6425610833a22dbe6"
 
 PR = "r0"
 
@@ -58,5 +59,7 @@ do_deploy() {
 
 addtask deploy after do_install before do_package
 
-FILES_${PN} += "${base_libdir}/modules/*"
-FILES_${PN}-dev += "/usr/include/*"
+FILES:${PN} += "${base_libdir}/modules/*"
+FILES:${PN} += "/usr/lib/modules/*"
+FILES:${PN} += "/usr/lib/*"
+FILES:${PN}-dev += "/usr/include/*"
