@@ -30,7 +30,7 @@ do_compile() {
     MODULE_OUT=${S} \
     VIDEO_ROOT=${WORKDIR}/vendor/qcom/opensource/video-driver \
     ./build/build_module.sh \
-    KBUILD_EXTRA_SYMBOLS=${WORKDIR}/recipe-sysroot/lib/modules/${KERNEL_VERSION}/mmrm-kernel/Module.symvers
+    KBUILD_EXTRA_SYMBOLS=${WORKDIR}/recipe-sysroot/${base_libdir}/modules/${KERNEL_VERSION}/mmrm-kernel/Module.symvers
 }
 
 do_install() {
@@ -41,7 +41,7 @@ do_install() {
     install -m 0755 ${B}/msm_video/msm_video.ko -D ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}
 
     ## copy Module.symvers so that other DLKM can make use of symbol of current DLKM
-    install -m 0644 ${B}/Module.symvers -D ${D}/lib/modules/${KERNEL_VERSION}/video-kernel/Module.symvers
+    install -m 0644 ${B}/Module.symvers -D ${D}/${base_libdir}/modules/${KERNEL_VERSION}/video-kernel/Module.symvers
 }
 do_deploy() {
 # Deploy unstripped kernel modules into ${DEPLOYDIR}/kernel_modules for debugging purposes
