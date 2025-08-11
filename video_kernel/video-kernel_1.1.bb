@@ -37,7 +37,7 @@ do_compile() {
 
 do_install() {
     install -m 0644 ${WORKDIR}/${BASEMACHINE}/video_load.conf -D ${D}${sysconfdir}/modules-load.d/video_load.conf
-    install -m 0644 ${WORKDIR}/vendor/qcom/opensource/video-driver/msm_video.ko -D ${D}${base_libdir}/modules/${KERNEL_VERSION}/msm_video.ko
+    install -m 0644 ${WORKDIR}/vendor/qcom/opensource/video-driver/msm_video.ko -D ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}/msm_video.ko
     install -m 0644 ${STAGING_KERNEL_BUILDDIR}/usr/include/vidc/media/v4l2_vidc_extensions.h -D ${D}/usr/include/vidc/media/v4l2_vidc_extensions.h
 }
 
@@ -51,4 +51,4 @@ do_deploy() {
 
 addtask deploy after do_install before do_package
 
-FILES:${PN} += "${base_libdir}/modules/${KERNEL_VERSION}/*"
+FILES:${PN} += "${nonarch_base_libdir}/modules/${KERNEL_VERSION}/*"
