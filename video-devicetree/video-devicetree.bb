@@ -24,13 +24,13 @@ do_configure () {
 
 do_compile() {
     cd ${KERNEL_PLATFORM_PATH}
-    BUILD_CONFIG=msm-kernel/${KERNEL_CONFIG} \
+    BUILD_CONFIG=${KERNEL_BUILD_CONFIG} \
     EXT_MODULES=${EXT_MODULES} \
     MODULE_OUT=${WORKDIR}/vendor/qcom/opensource/video-devicetree \
     INPLACE_COMPILE=y \
-    KERNEL_KIT=${KERNEL_PREBUILT_PATH} \
+    KERNEL_KIT=${KERNEL_OUT_PATH}/ \
     OUT_DIR=${WORKDIR}/out/${KERNEL_DEFCONFIG} \
-    ./build/build_module.sh
+    ./build/build_module.sh dtbs
 }
 
 do_deploy() {
