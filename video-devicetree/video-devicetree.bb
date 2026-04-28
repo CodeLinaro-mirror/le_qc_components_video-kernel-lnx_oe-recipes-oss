@@ -28,14 +28,14 @@ do_compile() {
     EXT_MODULES=${EXT_MODULES} \
     MODULE_OUT=${WORKDIR}/vendor/qcom/opensource/video-devicetree \
     INPLACE_COMPILE=y \
-    KERNEL_KIT=${KERNEL_OUT_PATH}/ \
+    KERNEL_KIT=${KERNEL_PREBUILT_PATH} \
     OUT_DIR=${WORKDIR}/out/${KERNEL_DEFCONFIG} \
     ./build/build_module.sh dtbs
 }
 
 do_deploy() {
     install -d ${DEPLOYDIR}/tech_dtbs
-    install -m 0644 ${WORKDIR}/vendor/qcom/opensource/video-devicetree/${BASEMACHINE}-vidc*.dtbo \
+    install -m 0644 ${WORKDIR}/vendor/qcom/opensource/video-devicetree/*-vidc*.dtbo \
     ${DEPLOYDIR}/tech_dtbs
 }
 
