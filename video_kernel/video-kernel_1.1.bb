@@ -9,7 +9,7 @@ SRC_URI  =  "file://vendor/qcom/opensource/video-driver/"
 SRC_URI +=  "file://${BASEMACHINE}/video_load.conf"
 S = "${WORKDIR}/vendor/qcom/opensource/video-driver"
 DEPENDS += "virtual/kernel bc-native rsync-native synx-kernel-header mmdlkm-headers"
-DEPENDS:remove:qrbx210-rbx = "rsync-native"
+DEPENDS:remove:qrbx210-rbx = "rsync-native synx-kernel-header"
 
 KERNEL_VERSION = "${@get_kernelversion_file("${STAGING_KERNEL_BUILDDIR}")}"
 EXT_MODULES = "${@os.path.relpath("${S}", "${KERNEL_PLATFORM_PATH}")}"
