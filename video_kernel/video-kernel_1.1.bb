@@ -15,7 +15,7 @@ FILESPATH =. "${WORKSPACE}:"
 SRC_URI  =  "file://vendor/qcom/opensource/video-driver/"
 SRC_URI +=  "file://${BASEMACHINE}/video_load.conf"
 
-S = "${WORKDIR}/vendor/qcom/opensource/video-driver"
+S = "${UNPACKDIR}/vendor/qcom/opensource/video-driver"
 KERNEL_VERSION = "${@get_kernelversion_file("${STAGING_KERNEL_BUILDDIR}")}"
 EXTRA_OEMAKE += "TARGET_SUPPORT=${BASEMACHINE}"
 
